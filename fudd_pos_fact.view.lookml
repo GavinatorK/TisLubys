@@ -284,8 +284,16 @@
     approximate_threshold: 100000
     drill_fields: []
     
-  - measure: counttransaction
+  - measure: counttransaction_99
     type: count_distinct
+    filters:
+      location_description: '3014-Meyer Park,3018-Brandywine,3019-Algonquin,3025-Galveston,3068-Annapolis,3174-Rockville,3246-Tidwell,3269-Copperfield,3353-Columbia,3356-Bee Cave,3359-Lakeline,3481-Newark,3652-Kerrville'
+    sql: ${transaction_id}
+
+  - measure: counttransaction_no99
+    type: count_distinct
+    filters:
+      location_description: '-3014-Meyer Park,-3018-Brandywine,-3019-Algonquin,-3025-Galveston,-3068-Annapolis,-3174-Rockville,-3246-Tidwell,-3269-Copperfield,-3353-Columbia,-3356-Bee Cave,-3359-Lakeline,-3481-Newark,-3652-Kerrville'
     sql: ${transaction_id}
 
   - measure: count99cent
