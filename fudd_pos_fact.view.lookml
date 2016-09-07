@@ -359,3 +359,8 @@
     type: avg_distinct
     sql_distinct_key: ${transaction_id}
     sql: ${item_count}
+
+  - measure: avgpertransaction
+    type: avg_distinct
+    sql_distinct_key: ${transaction_id}
+    sql: ${sale_total}
