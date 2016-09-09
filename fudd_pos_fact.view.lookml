@@ -284,6 +284,11 @@
     approximate_threshold: 100000
     drill_fields: []
     
+  - measure: counttransaction
+    type: count_distinct
+    sql_distinct_key: ${location_description}
+    sql: ${transaction_id} 
+    
   - measure: counttransaction_99
     type: count_distinct
     filters:
@@ -324,6 +329,11 @@
     approximate_threshold: 100000
     drill_fields: []    
     
+  - measure: kiddoggrowth
+    type: percent_of_previous
+    sql: ${countkiddogs}
+    
+    
   - measure: countBurgers
     type: count
     filters:
@@ -340,25 +350,37 @@
     drill_fields: [] 
     
 
-  - measure: hotdogrevenue
+  - measure: Revenue_Hot_Dogs
     type: sum
     filters: 
       product_description: '%Hot Dog%, - 99 Cent Hot Dog, -%Kid%'
     sql: ${sales}
+    
+  - measure: Burger_Revenue
+    type: sum
+    filters:
+      product_description: '%Burger%'
+    sql: ${sales}
 
-  - measure: kiddogrevenue
+  - measure: Kid_dog_Revenue
     type: sum
     filters: 
       product_description: '%Kids Hot Dog%'
     sql: ${sales}
     
     
-  - measure: 99centrevenue
+  - measure: Sides_Revenue
+    type: sum
+    filters: 
+      terminal_category_table.category_description: '%Side%'
+    sql: ${sales}
+
+  - measure: 99centHD_Revenue
     type: sum
     filters: 
       product_description: '99 Cent Hot Dog'
     sql: ${sales}
-    
+
   - measure: TOTALREV
     type: sum
     sql: ${sales}
@@ -368,7 +390,7 @@
     sql_distinct_key: ${transaction_id}
     sql: ${item_count}
 
-  - measure: avgpertransaction
+  - measure: avgamountpertransaction
     type: avg_distinct
     sql_distinct_key: ${transaction_id}
     sql: ${sale_total}

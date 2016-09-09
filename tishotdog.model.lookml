@@ -24,3 +24,6 @@
 
 - explore: terminal_category_table
 
+- explore: fudd_results
+
+- explore: fudd_loc_details
