@@ -12,6 +12,12 @@
       type: left_outer
       relationship: many_to_one
       sql_on: ${fudd_pos_fact.category_id} = ${terminal_category_table.category_id}
+      
+    - join: fudd_loc_details
+      type: left_outer
+      relationship: many_to_one
+      sql_on: ${fudd_pos_fact.location_description} = ${fudd_loc_details.venue_description}
+    
     
 
 - explore: terminal_location_table

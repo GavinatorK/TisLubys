@@ -30,9 +30,9 @@
     type: number
     sql: ${TABLE}.Year
 
-  - dimension: yearmonth
-    type: string
-    sql: ${TABLE}.yearmonth
+  - dimension: date
+    type: time
+    sql: ${TABLE}.Date
 
   - measure: Foot_Traffic
     type: average
@@ -45,3 +45,7 @@
   - measure: flag
     type: average
     sql: ${centflag}    
+
+  - measure: flag_change
+    type: percent_of_previous
+    sql: ${flag}

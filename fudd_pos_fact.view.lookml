@@ -354,36 +354,36 @@
     type: sum
     filters: 
       product_description: '%Hot Dog%, - 99 Cent Hot Dog, -%Kid%'
-    sql: ${sales}
+    sql: ${sales_ex}
     
   - measure: Burger_Revenue
     type: sum
     filters:
       product_description: '%Burger%'
-    sql: ${sales}
+    sql: ${sales_ex}
 
   - measure: Kid_dog_Revenue
     type: sum
     filters: 
       product_description: '%Kids Hot Dog%'
-    sql: ${sales}
+    sql: ${sales_ex}
     
     
   - measure: Sides_Revenue
     type: sum
     filters: 
       terminal_category_table.category_description: '%Side%'
-    sql: ${sales}
+    sql: ${sales_ex}
 
   - measure: 99centHD_Revenue
     type: sum
     filters: 
       product_description: '99 Cent Hot Dog'
-    sql: ${sales}
+    sql: ${sales_ex}
 
   - measure: TOTALREV
     type: sum
-    sql: ${sales}
+    sql: ${sales_ex}
       
   - measure: avgitemcount
     type: avg_distinct
@@ -394,3 +394,15 @@
     type: avg_distinct
     sql_distinct_key: ${transaction_id}
     sql: ${sale_total}
+    
+  - measure: counttransaction_Texas
+    type: count_distinct
+    filters: 
+      fudd_loc_details.zipcode: '7%'
+    sql: ${transaction_id}
+    
+  - measure: counttransaction_nottx
+    type: count_distinct
+    filters:
+      fudd_loc_details.zipcode: '-7%'
+    sql: ${transaction_id} 

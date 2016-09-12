@@ -1,5 +1,5 @@
 - view: fudd_loc_details
-  sql_table_name: tis_lubys.Fudd_Loc_Details
+  sql_table_name: tis_lubys.fudd_Loc_Details
   fields:
 
   - dimension: lat
@@ -18,12 +18,17 @@
     type: string
     sql: ${TABLE}.Venue_Description
 
+  - dimension: store_location
+    type: location
+    sql_latitude: ${lat}
+    sql_longitude: ${lon}
+
   - dimension: venue_no
     type: string
     sql: ${TABLE}.Venue_No
 
-  - dimension: zip
-    type: zipcode
+  - dimension: zipcode
+    type: string
     sql: ${TABLE}.Zipcode
 
   - measure: count
